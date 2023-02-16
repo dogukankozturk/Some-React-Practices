@@ -1,0 +1,85 @@
+.taskForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskCreate {
+  width: 450px;
+}
+
+.page {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.createTask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.updateTask {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.taskList {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.singleTask {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 33% - 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px 10px;
+}
+
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.task-label {
+  margin: 10px 0px;
+}
+
+.taskTitle {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.createButton {
+  margin: 10px 0px;
+  padding: 10px;
+  font-size: x-large;
+  border-radius: 50px;
+}
+.singleTaskButtons {
+  gap: 10px;
+}
