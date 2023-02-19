@@ -6,27 +6,34 @@ const BASE_URL = "http://localhost:3006/tasks/";
 
 const TasksContext = createContext();
 
-function ContextProvider(dogukanProps) {
+function ContextProvider(props) {
   axios.defaults.baseURL = BASE_URL;
+  axios.defaults.timeout = 1000;
 
   const [taskArray, setTaskArray] = useState([]);
 
   const sendItemtoAPI = async (title1, desc1) => {
-    const response = await axios.post(BASE_URL, {
-      id: Math.round(Math.random() * 999999),
-      title: title1,
-      desc: desc1,
-    });
-    const createdTask = [
-      ...taskArray,
-      {
-        id: response.data.id,
-        taskTitle: response.data.title,
-        taskDesc: response.data.desc,
-      },
-    ];
+    try {
+      const response = await axios.post(BASE_URL, {
+        id: Math.round(Math.random() * 999999),
+        title: title1,
+        desc: desc1,
+      });
 
-    setTaskArray(createdTask);
+      const createdTask = [
+        ...taskArray,
+        {
+          id: response.data.id,
+          taskTitle: response.data.title,
+          taskDesc: response.data.desc,
+        },
+      ];
+
+      debugger;
+      setTaskArray(createdTask);
+    } catch (error) {
+      debugger;
+    }
   };
 
   const deleteTask = async (task) => {
@@ -57,9 +64,13 @@ function ContextProvider(dogukanProps) {
   };
 
   const getItems = async () => {
-    const response = await axios.get("");
-
-    setTaskArray(response.data);
+    try {
+      const response = await axios.get("");
+      setTaskArray(response.data);
+      console.log("Get Items");
+    } catch (error) {
+      console.log("Cant Get Items");
+    }
   };
 
   const sharedItems = {
@@ -72,7 +83,7 @@ function ContextProvider(dogukanProps) {
 
   return (
     <TasksContext.Provider value={sharedItems}>
-      {dogukanProps.children}
+      {props.children}
     </TasksContext.Provider>
   );
 }
